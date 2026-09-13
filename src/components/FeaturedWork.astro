@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const featured = projects
+  .filter(p => p.data.featured)
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
+  .slice(0, 4);
+---
+
+<section class="featured-work" id="work" aria-labelledby="work-heading">
+  <div class="container">
+    <div class="work-intro">
+      <span class="eyebrow">— Selected work</span>
+      <h2 id="work-heading" class="section-heading">Projects that prove the claims above.</h2>
+      <p class="work-intro-body">Each project follows the same structure: a question, the data, what I built, and what changed.</p>
+      <a href="/work" class="text-link">Explore more <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="project-grid">
+      {featured.map((project, i) => (
+        <a href={`/work/${project.id}`} class:list={['project-card', { featured: i === 0 }]}>
+          <article>
+            <div class="card-header">
+              <h3 class="card-title">{project.data.title}</h3>
+              <div class="card-tags">
+                {project.data.tags.map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+            {project.data.coverImage && (
+              <div class="card-cover">
+                <img src={project.data.coverImage} alt={project.data.title} loading="lazy" />
+              </div>
+            )}
+            {project.data.metrics && project.data.metrics.length > 0 && (
+              <div class="card-metrics">
+                {project.data.metrics.map(metric => (
+                  <span class="metric-chip">{metric}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-work {
+    padding: var(--space-9) 0;
+    background-color: var(--surface-deep);
+  }
+
+  .work-intro {
+    margin-bottom: var(--space-7);
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: var(--step-h1);
+    font-weight: 400;
+    color: var(--text);
+    margin: var(--space-3) 0 0;
+  }
+
+  .work-intro-body {
+    font-family: var(--font-body);
+    font-size: var(--step-p);
+    color: var(--text-body);
+    margin: var(--space-3) 0 0;
+    max-width: 540px;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+
+  .project-card {
+    display: block;
+    text-decoration: none;
+    background-color: var(--surface-raised);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 175, 41, 0.3);
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  article {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--step-h3);
+    font-weight: 400;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: var(--step-tag);
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tag:not(:last-child)::after {
+    content: "·";
+    margin-left: var(--space-2);
+  }
+
+  .card-cover {
+    margin: var(--space-2) 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--surface-deep);
+  }
+
+  .card-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .card-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: auto;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .metric-chip {
+    font-family: var(--font-body);
+    font-size: var(--step-small);
+    color: var(--text-body);
+    background-color: var(--surface-deep);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 1023px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+    .project-card.featured {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .featured-work {
+      padding: var(--space-8) 0;
+    }
+    .section-heading {
+      font-size: var(--step-h2);
+    }
+  }
+</style>

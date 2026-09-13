@@ -1,0 +1,50 @@
+---
+---
+<section class="positioning" aria-label="What I do">
+  <div class="container pos-grid">
+    <div class="pos-left">
+      <span class="eyebrow">— What I do</span>
+      <h2 class="section-heading">Any type of data question, from a messy export to a live dashboard.</h2>
+      <p class="pos-body">Send me the spreadsheet everyone&apos;s afraid of. I&apos;ll tell you what&apos;s in it, what&apos;s wrong with it, and what it&apos;s worth knowing.</p>
+      <a href="mailto:anjumsadat09082@gmail.com?subject=Project%20inquiry" class="text-link">anjumsadat09082@gmail.com <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="pos-right">
+      <p class="pos-body">Most reporting problems aren&apos;t analysis problems. They&apos;re plumbing problems — the same numbers pulled by hand, reconciled by hand, and pasted into a deck by hand every morning. I fix the plumbing first, then the analysis gets interesting.</p>
+      <div class="stat-row" role="list" aria-label="Key statistics">
+        <div class="stat-item" role="listitem" aria-label="20 plus distribution hubs monitored daily">
+          <span class="stat-number">20+</span>
+          <span class="stat-label">Distribution hubs monitored daily</span>
+        </div>
+        <div class="stat-item" role="listitem" aria-label="Four analytics projects shipped">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Analytics projects shipped</span>
+        </div>
+        <div class="stat-item" role="listitem" aria-label="Three years teaching and presenting">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Years teaching &amp; presenting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.positioning { background-color: var(--surface-deep); padding: var(--space-9) 0; }
+.pos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start; }
+.pos-left { display: flex; flex-direction: column; gap: var(--space-3); }
+.pos-body { font-family: var(--font-body); font-size: var(--step-p); color: var(--text-body); line-height: 1.85; margin: 0; }
+.stat-row { display: flex; gap: var(--space-6); margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--hairline); }
+.stat-item { flex: 1; }
+.stat-number { display: block; font-family: var(--font-display); font-size: var(--step-stat); font-weight: 400; color: var(--accent); line-height: 1.1; letter-spacing: -0.03em; }
+.stat-label { display: block; font-family: var(--font-body); font-size: var(--step-small); color: var(--text-muted); margin-top: var(--space-1); line-height: 1.4; }
+
+@media (max-width: 1023px) {
+  .pos-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .stat-row { gap: var(--space-4); }
+}
+@media (max-width: 767px) {
+  .stat-row { flex-wrap: wrap; }
+  .stat-item { min-width: 140px; flex: 1 1 calc(50% - var(--space-3)); }
+}
+@media (prefers-reduced-motion: reduce) { .positioning { animation: none !important; } }
+</style>

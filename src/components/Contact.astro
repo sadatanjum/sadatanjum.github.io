@@ -1,0 +1,412 @@
+---
+---
+
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <div class="container contact-grid">
+    <!-- Left: Pitch -->
+    <div class="contact-left">
+      <h2 id="contact-heading" class="contact-heading">Got a problem in a spreadsheet? Let's talk.</h2>
+      <p class="contact-body">Tell me what you're trying to find out and what you've got to work with. I'll reply within two working days.</p>
+      <div class="contact-links">
+        <a href="mailto:anjumsadat09082@gmail.com" class="text-link">anjumsadat09082@gmail.com <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-right">
+      <h3 class="form-heading">Start here.</h3>
+      <!-- Web3Forms endpoint (replace YOUR_ACCESS_KEY below with your Web3Forms access key) -->
+      <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+        <div class="form-group">
+          <label for="name">What's your name?</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            aria-describedby="name-error"
+            class="form-input"
+          />
+          <span id="name-error" class="form-error" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            aria-describedby="email-error"
+            class="form-input"
+          />
+          <span id="email-error" class="form-error" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">What's this about?</label>
+          <select
+            id="subject"
+            name="subject"
+            required
+            aria-describedby="subject-error"
+            class="form-input"
+          >
+            <option value="">Choose one</option>
+            <option value="job">Job opportunity</option>
+            <option value="freelance">Freelance project</option>
+            <option value="other">Something else</option>
+          </select>
+          <span id="subject-error" class="form-error" role="alert"></span>
+        </div>
+
+        <!-- Conditional: Job opportunity -->
+        <div class="form-group form-conditional" id="company-group" hidden>
+          <label for="company">Company / organisation</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            class="form-input"
+          />
+        </div>
+
+        <!-- Conditional: Freelance project -->
+        <div class="form-group form-conditional" id="budget-group" hidden>
+          <label for="budget">Budget range</label>
+          <select id="budget" name="budget" class="form-input">
+            <option value="">Choose one</option>
+            <option value="under-250">Under $250</option>
+            <option value="250-1000">$250–1,000</option>
+            <option value="1000-plus">$1,000+</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell me about your project</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            minlength="20"
+            aria-describedby="message-error"
+            class="form-input form-textarea"
+            placeholder="Min 20 characters"
+          ></textarea>
+          <span id="message-error" class="form-error" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="link">Link to data or brief</label>
+          <input
+            type="url"
+            id="link"
+            name="link"
+            class="form-input"
+            placeholder="https://..."
+          />
+        </div>
+
+        <!-- Honeypot -->
+        <input type="text" name="website" hidden aria-hidden="true" tabindex="-1" autocomplete="off" />
+
+        <div class="form-submit">
+          <button
+            type="submit"
+            class="btn-primary"
+            id="submit-btn"
+          >
+            Send
+          </button>
+          <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+          <p class="form-privacy">Your details go to my email via Web3Forms and aren't used for anything else.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: var(--space-10) 0;
+    background-color: var(--surface-deep);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .contact-heading {
+    font-family: var(--font-display);
+    font-size: var(--step-h1);
+    font-weight: 400;
+    color: var(--text);
+    margin: 0 0 var(--space-4);
+    line-height: 1.2;
+  }
+
+  .contact-body {
+    font-family: var(--font-body);
+    font-size: var(--step-p);
+    color: var(--text-body);
+    line-height: 1.85;
+    margin: 0 0 var(--space-5);
+    max-width: 480px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .form-heading {
+    font-family: var(--font-display);
+    font-size: var(--step-h3);
+    font-weight: 400;
+    color: var(--text);
+    margin: 0 0 var(--space-4);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-group label {
+    font-family: var(--font-body);
+    font-size: var(--step-small);
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .form-input {
+    font-family: var(--font-body);
+    font-size: var(--step-p);
+    color: var(--text);
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--hairline);
+    padding: var(--space-2) 0;
+    transition: border-color var(--transition-fast);
+    outline: none;
+  }
+
+  .form-input:focus {
+    border-bottom-color: var(--accent);
+  }
+
+  .form-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    padding: var(--space-2);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
+  }
+
+  .form-textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-error {
+    font-family: var(--font-body);
+    font-size: var(--step-small);
+    color: var(--accent);
+    display: none;
+  }
+
+  .form-error.show {
+    display: block;
+  }
+
+  .form-conditional {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-fast), opacity var(--transition-fast);
+    opacity: 0;
+  }
+
+  .form-conditional.show {
+    display: flex;
+    max-height: 100px;
+    opacity: 1;
+  }
+
+  .form-submit {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .form-submit button {
+    cursor: pointer;
+  }
+
+  .form-submit button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-status {
+    font-family: var(--font-body);
+    font-size: var(--step-small);
+    color: var(--text-muted);
+    display: none;
+  }
+
+  .form-status.show {
+    display: block;
+  }
+
+  .form-status.success {
+    color: var(--accent);
+  }
+
+  .form-status.error {
+    color: var(--accent);
+  }
+
+  .form-privacy {
+    font-family: var(--font-body);
+    font-size: var(--step-small);
+    color: var(--text-muted);
+    margin: var(--space-2) 0 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1023px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .contact {
+      padding: var(--space-8) 0;
+    }
+
+    .contact-heading {
+      font-size: var(--step-h2);
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const subjectSelect = document.getElementById('subject');
+  const companyGroup = document.getElementById('company-group');
+  const budgetGroup = document.getElementById('budget-group');
+  const submitBtn = document.getElementById('submit-btn');
+  const formStatus = document.getElementById('form-status');
+
+  // Show/hide conditional fields
+  subjectSelect.addEventListener('change', (e) => {
+    const value = e.target.value;
+
+    if (value === 'job') {
+      companyGroup.classList.add('show');
+      companyGroup.hidden = false;
+      budgetGroup.classList.remove('show');
+      budgetGroup.hidden = true;
+    } else if (value === 'freelance') {
+      budgetGroup.classList.add('show');
+      budgetGroup.hidden = false;
+      companyGroup.classList.remove('show');
+      companyGroup.hidden = true;
+    } else {
+      companyGroup.classList.remove('show');
+      companyGroup.hidden = true;
+      budgetGroup.classList.remove('show');
+      budgetGroup.hidden = true;
+    }
+  });
+
+  // Form submission (Web3Forms fetch-based flow)
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Check honeypot
+    const honeypot = form.querySelector('input[name="website"]').value;
+    if (honeypot) {
+      // Silently fail
+      console.log('Honeypot caught');
+      return;
+    }
+
+    // Validate message length
+    const message = document.getElementById('message').value;
+    if (message.length < 20) {
+      document.getElementById('message-error').textContent = 'Message must be at least 20 characters';
+      document.getElementById('message-error').classList.add('show');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formStatus.textContent = '';
+    formStatus.classList.remove('show', 'success', 'error');
+
+    try {
+      const formData = new FormData(form);
+      const formObj = Object.fromEntries(formData.entries());
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(formObj),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        formStatus.textContent = 'Sent. I\'ll reply within two working days — check your spam folder if you don\'t hear back.';
+        formStatus.classList.add('show', 'success');
+        form.reset();
+        subjectSelect.value = '';
+        companyGroup.classList.remove('show');
+        companyGroup.hidden = true;
+        budgetGroup.classList.remove('show');
+        budgetGroup.hidden = true;
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      formStatus.textContent = 'Couldn\'t send that. Email anjumsadat09082@gmail.com directly and I\'ll pick it up.';
+      formStatus.classList.add('show', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    }
+  });
+
+  // Clear error on input
+  ['name', 'email', 'message'].forEach(fieldId => {
+    document.getElementById(fieldId).addEventListener('input', () => {
+      const errorEl = document.getElementById(`${fieldId}-error`);
+      if (errorEl) {
+        errorEl.classList.remove('show');
+        errorEl.textContent = '';
+      }
+    });
+  });
+</script>

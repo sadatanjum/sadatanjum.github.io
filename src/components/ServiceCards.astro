@@ -1,0 +1,46 @@
+---
+---
+<section class="services-section" aria-label="Services">
+  <div class="container">
+    <div class="services-grid">
+      <article class="service-card accent-card">
+        <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="36" width="6" height="6" rx="1"/><rect x="15" y="24" width="6" height="18" rx="1"/><rect x="24" y="18" width="6" height="24" rx="1"/><rect x="33" y="10" width="6" height="32" rx="1"/></svg>
+        <h3 class="card-title">Analytics &amp; <br />Reporting.</h3>
+        <p class="card-meta">SQL · daily reporting packs · KPI definition</p>
+        <p class="card-body">Pulling the numbers, checking them, and getting them in front of the people who decide. Recurring reports that don&apos;t need a human every morning.</p>
+      </article>
+      <article class="service-card dark-card">
+        <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="36" height="24" rx="2"/><path d="M12 40L24 28L36 40"/><circle cx="20" cy="14" r="3"/><path d="M28 20L36 12"/></svg>
+        <h3 class="card-title">Dashboards &amp; <br />Visualisation.</h3>
+        <p class="card-meta">Power BI · Tableau · Looker Studio · Apps Script</p>
+        <p class="card-body">Dashboards people actually open. SLA tracking, drill-downs, and alert thresholds — built so the answer is one glance, not one query.</p>
+      </article>
+      <article class="service-card dark-card">
+        <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 24H36"/><path d="M16 8L8 24L16 40"/><path d="M32 8L40 24L32 40"/><circle cx="24" cy="24" r="4"/></svg>
+        <h3 class="card-title">Automation &amp; <br />Data Plumbing.</h3>
+        <p class="card-meta">n8n · Apps Script · advanced spreadsheets</p>
+        <p class="card-body">Connecting the tools you already pay for. Forms to sheets to alerts to warehouse, without the copy-paste step in the middle.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+.services-section { padding: var(--space-9) 0; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+.service-card { padding: var(--space-6) var(--space-5); border-radius: var(--radius-card); display: flex; flex-direction: column; gap: var(--space-3); min-height: 320px; }
+.accent-card { background-color: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); }
+.accent-card .card-title { color: var(--on-accent); }
+.accent-card .card-meta, .accent-card .card-body { color: rgba(36, 39, 52, 0.85); }
+.dark-card { background-color: var(--surface-raised); color: var(--text); border: 1px solid var(--hairline); }
+.dark-card .card-title { color: var(--text); }
+.dark-card .card-meta { color: var(--text-body); }
+.dark-card .card-body { color: var(--text-body); }
+.card-icon { margin-bottom: var(--space-2); opacity: 0.9; }
+.card-title { font-family: var(--font-display); font-size: var(--step-h3); font-weight: 400; line-height: 1.2; margin: 0; }
+.card-meta { font-family: var(--font-body); font-size: var(--step-tag); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+.card-body { font-family: var(--font-body); font-size: var(--step-p); line-height: 1.55; margin: 0; }
+
+@media (max-width: 1023px) { .services-grid { grid-template-columns: 1fr; gap: var(--space-4); } .service-card { min-height: auto; } }
+@media (prefers-reduced-motion: reduce) { .services-section { animation: none !important; } }
+</style>
